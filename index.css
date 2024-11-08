@@ -2,7 +2,7 @@
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 :root {
@@ -26,11 +26,14 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: row;
-  margin: 0;
-  /* border: 5px solid red; */
-  background-color: var(--secondary-color);
-  box-sizing: border-box;
-  width: 100%;
+  background: no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  text-shadow: 0px 0px 20px #242424;
 }
 
 #layout {
@@ -1420,5 +1423,27 @@ input:checked + #label-checkbox-theme:after {
 
   .modal-window {
     width: 30%;
+  }
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .side-bar {
+      transform: translateX(-100%); /* Hide sidebar by default on smaller screens */
+      position: fixed; /* Fix the sidebar to the left edge */
+      height: 100%;
+      z-index: 10; /* Ensure it stays on top */
+  }
+
+  .side-bar.show {
+      transform: translateX(0); /* Show sidebar when toggled */
+  }
+
+  #show-side-bar-btn {
+      display: block; /* Show the toggle button */
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 20;
   }
 }

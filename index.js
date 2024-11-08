@@ -1,3 +1,18 @@
+fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature")
+    .then(res => res.json())
+    .then(data => {
+        document.body.style.backgroundImage = `url(${data.urls.regular})`
+         console.log(data);
+    })
+    .catch(err => {
+        // Use a default background image/author
+        document.body.style.backgroundImage = `url("https://images.unsplash.com/photo-1464800959563-472c0567132f?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxNDI0NzB8MHwxfHJhbmRvbXx8fHx8fHx8fDE3Mjc0MjYxNDJ8&ixlib=rb-4.0.3&q=85")`;
+    })
+
+
+
+
+
 // TASK: import helper functions from utils
 import { getTasks, createNewTask, patchTask, deleteTask } from "./utils/taskFunctions.js";
 // TASK: import initialData
@@ -287,6 +302,8 @@ const saveChangesHandler = () => {
   console.log(tasksArray);
   console.log(`${selectedTask.title} edited.`);
 };
+
+
 function onDeleteTaskClick() {
   const userConfirmed = confirm(`Are you sure you want to delete "${selectedTask.title}"?`);
 
