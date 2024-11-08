@@ -65,6 +65,19 @@ body {
   width: 350px;
 }
 
+
+
+
+/* Responsive styling for smaller screens */
+@media screen and (max-width: 768px) {
+  #sidebar {
+      width: 100px; /* Adjust width for smaller screens */
+      position: absolute; /* Changes positioning */
+      z-index: 0; /* May need adjustment for layering */
+  }
+}
+
+
 .boards-nav-links-div {
   display: flex;
   flex-direction: column;
@@ -1426,24 +1439,23 @@ input:checked + #label-checkbox-theme:after {
   }
 }
 
-/* Responsive styles */
-@media screen and (max-width: 768px) {
+/* Media Query for Screens Smaller Than 768px */
+@media (max-width: 768px) {
+  /* Sidebar adjustments */
   .side-bar {
-      transform: translateX(-100%); /* Hide sidebar by default on smaller screens */
-      position: fixed; /* Fix the sidebar to the left edge */
-      height: 100%;
-      z-index: 10; /* Ensure it stays on top */
+      position: fixed; /* Keeps it fixed to the left */
+      width: 70%; /* Adjust width to be a percentage on smaller screens */
+      max-width: 250px; /* Limit the maximum width */
+      height: 100%; /* Full height */
+      top: 0;
+      left: -100%; /* Initially hide it off-screen */
+      transition: left 0.3s ease; /* Smooth transition for sliding */
+      z-index: 1000; /* Ensure it sits above other content */
   }
 
-  .side-bar.show {
-      transform: translateX(0); /* Show sidebar when toggled */
-  }
 
+@media (min-width: 769px) {
   #show-side-bar-btn {
-      display: block; /* Show the toggle button */
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      z-index: 20;
+      display: none;
   }
 }
